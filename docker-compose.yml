@@ -47,7 +47,6 @@ services:
       << : *default-environment # loads the defined environment variables from the top
 
   mariadb:
-    environment:
     labels:
       lagoon.type: mariadb
     << : *default-user # uses the defined user from top
@@ -58,22 +57,17 @@ services:
     image: uselagoon/varnish-6-drupal:latest
     labels:
       lagoon.type: varnish
-      lando.type: varnish-drupal
     links:
       - nginx # links varnish to the nginx in this docker-compose project, or it would try to connect to any nginx running in docker
     << : *default-user # uses the defined user from top
     environment:
       << : *default-environment
-      VARNISH_BYPASS: "true" # by default we bypass varnish, change to 'false' or remove in order to tell varnish to cache if possible
-    networks:
-      - amazeeio-network
-      - default
 
   redis:
     image: uselagoon/redis-6:latest
     labels:
       lagoon.type: redis
-      lando.type: redis
     << : *default-user # uses the defined user from top
     environment:
       << : *default-environment
+
