@@ -1,7 +1,7 @@
 # This template contains variables for all aspects of the file that may change
 # from site to site. Reversly it hardcodes any configuration that should be kept
 # static across all sites.
-FROM ghcr.io/danskernesdigitalebibliotek/dpl-cms-source:0.5.2 AS release
+FROM ghcr.io/danskernesdigitalebibliotek/dpl-cms-source:0.5.1 AS release
 
 FROM uselagoon/php-8.0-cli-drupal:21.9.0
 
